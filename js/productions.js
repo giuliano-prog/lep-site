@@ -1,4 +1,4 @@
-/* Dados editoriais centralizados. Inclua somente informações confirmadas nas fontes do README. */
+/* Dados editoriais centralizados. Anos e ordem atualizados conforme briefing da LEP. */
 const productions = [
   {
     slug: 'ronaldinho-gaucho',
@@ -18,10 +18,10 @@ const productions = [
     slug: 'a-conspiracao-condor',
     title: 'A Conspiração Condor',
     type: 'Longa-metragem de ficção',
-    year: '2025',
+    year: '2026',
     synopsis: 'Após a morte de Juscelino Kubitschek em 1976, uma jornalista investiga o caso. A morte de João Goulart, meses depois, amplia suas suspeitas.',
     cover: 'assets/images/conspiracao-condor.jpg',
-    trailer: 'https://youtu.be/VgtFbF31UgY?si=1Cu68-onqbI324qH',
+    trailer: 'https://www.youtube.com/watch?v=VgtFbF31UgY',
     instagram: 'https://www.instagram.com/lepfilmes_/',
     featured: true,
     credits: [
@@ -37,10 +37,21 @@ const productions = [
     slug: 'cordialmente-teus',
     title: 'Cordialmente Teus',
     type: 'Longa-metragem',
-    synopsis: 'Produção com participação da LEP Filmes, conforme o material de divulgação fornecido.',
+    year: '2024',
+    synopsis: 'Dez histórias em diferentes momentos da linha do tempo — como 1550, 1891, 1972 e 2083 — abordam revoltas, inquisição, tortura e sobrevivência no Brasil.',
     cover: 'assets/images/cordialmente-teus.jpg',
+    trailer: 'https://www.youtube.com/watch?v=-opzTb5bV4w',
+    director: 'Aimar Labaki',
+    genre: 'Drama / Terror',
     featured: false,
-    credits: [],
+    credits: [['Direção', 'Aimar Labaki'], ['Gênero', 'Drama / Terror']],
     notes: ''
   }
 ];
+
+// Preserva todas as produções cadastradas após os destaques.
+const productionOrder = ['a-conspiracao-condor', 'ronaldinho-gaucho', 'cordialmente-teus'];
+productions.sort((a, b) => {
+  const rank = item => productionOrder.includes(item.slug) ? productionOrder.indexOf(item.slug) : productionOrder.length;
+  return rank(a) - rank(b);
+});

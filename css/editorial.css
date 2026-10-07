@@ -1,4 +1,14 @@
 /* Shared navigation and internal editorial pages; Home content keeps its approved styles. */
+/* Native click remains the single activation event; scrolling and pinch zoom stay available. */
+@media(max-width:760px),(hover:none) and (pointer:coarse){
+  .trailer-cover,.menu-toggle,.menu-close,.site-nav a,.intro-skip,.intro-sound,.intro-test__skip{touch-action:manipulation}
+  .trailer-cover{isolation:isolate}
+  .trailer-cover *,.menu-toggle span,.intro-skip span{pointer-events:none}
+  .home-trailer iframe{position:relative;z-index:1;pointer-events:auto}
+  .home .site-intro video,.intro-test__stage{pointer-events:none}
+  .home .intro-actions{z-index:1}
+  .intro-test__skip{z-index:1}
+}
 .site-header{height:88px;justify-content:flex-start;gap:clamp(30px,4vw,64px);background:#000}
 .site-header>.wordmark{flex:none;width:66px;aspect-ratio:1.084;overflow:hidden}
 .site-header>.wordmark img{width:252%;height:auto;max-width:none;transform:translate(-31.5%,-16.4%)}

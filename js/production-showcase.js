@@ -37,14 +37,20 @@ const homeCatalog = document.getElementById('featured-productions') || document.
 homeCatalog.innerHTML = productions.filter(item => !isHome || item.slug !== 'cordialmente-teus').map(homeProduction).join('');
 homeCatalog.addEventListener('click', event => {
   const button = event.target.closest('[data-video-id]');
-  if (!button) return;
+  if (!button || !button.isConnected) return;
+  // Keep creation synchronous with the native click (also emitted by a tap).
+  // Do not combine touchend + click: that can activate the new iframe twice.
+  const mobilePlayback = event.pointerType === 'touch' || matchMedia('(max-width: 760px), (hover: none) and (pointer: coarse)').matches;
   const iframe = document.createElement('iframe');
-  iframe.src = `https://www.youtube-nocookie.com/embed/${button.dataset.videoId}?autoplay=1&playsinline=1&rel=0`;
+  // A newly loaded cross-origin player may not inherit audible playback permission
+  // on iOS. Start muted on mobile; the native YouTube controls enable sound.
+  iframe.src = `https://www.youtube-nocookie.com/embed/${button.dataset.videoId}?autoplay=1&playsinline=1&rel=0${mobilePlayback ? '&mute=1' : ''}`;
   iframe.title = `Trailer de ${button.dataset.title}`;
   iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
   iframe.allowFullscreen = true;
   iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+  // Replace the entire cover, including its captions and play icon: no overlay remains.
   button.replaceWith(iframe);
-  iframe.focus();
+  if (!mobilePlayback) iframe.focus();
 });
 

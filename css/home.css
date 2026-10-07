@@ -31,7 +31,9 @@
 .trailer-cover:focus-visible{outline-offset:-6px}
 .trailer-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:clamp(54px,6.5vw,88px);aspect-ratio:1;border:1px solid var(--warm);border-radius:50%;background:var(--warm);color:#000;transition:background .2s,color .2s}
 .trailer-play svg{width:28%;fill:currentColor;margin-left:4px}
-.trailer-cover:hover .trailer-play{background:transparent;color:var(--warm)}
+@media(hover:hover) and (pointer:fine){
+  .trailer-cover:hover .trailer-play{background:transparent;color:var(--warm)}
+}
 .trailer-caption{position:absolute;left:clamp(22px,4vw,60px);right:24px;bottom:clamp(22px,4vw,60px);display:grid;gap:12px}
 .trailer-caption strong{font:500 clamp(24px,3.2vw,48px)/1.1 var(--display);letter-spacing:-.03em;color:var(--warm)}
 .trailer-caption>span{font:12px/1.6 var(--mono);letter-spacing:.04em;color:var(--sand)}

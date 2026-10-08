@@ -187,3 +187,21 @@ Object.assign(LEP_MESSAGES, {
     "Trailer on Vimeo"
   ]
 });
+Object.assign(LEP_MESSAGES, {
+ 'detail.basic':['Identificação básica','Basic information'],
+ 'detail.team':['Equipe criativa e técnica principal','Creative and technical team'],
+ 'detail.media':['Conteúdo e divulgação','Content and publicity'],
+ 'detail.distribution':['Distribuição e exibição','Distribution and exhibition'],
+ 'detail.original':['Título original','Original title'],
+ 'detail.local':['Título local / traduzido','Local / translated title'],
+ 'detail.year':['Ano de lançamento / produção','Release / production year'],
+ 'detail.format':['Gênero / formato','Genre / format'],
+ 'detail.origin':['País de origem e idioma','Country of origin and language'],
+ 'detail.duration':['Duração','Running time'],
+ 'detail.rating':['Classificação indicativa','Age rating'],
+ 'detail.synopsis':['Sinopse','Synopsis'],
+ 'detail.image':['Poster / imagem de capa','Poster / cover image'],
+ 'detail.notes':['Festivais, prêmios e exibição','Festivals, awards and exhibition'],
+ 'detail.back':['Todas as produções','All productions']
+});
+Object.assign(LEP_MESSAGES, {'detail.trailer':['Trailer / teaser','Trailer / teaser']});

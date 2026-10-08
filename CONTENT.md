@@ -20,7 +20,7 @@ O site continua em HTML, CSS e JavaScript, sem framework ou etapa de build.
 4. Crie `producoes/<slug>.html` usando o template existente e defina `data-production` no body.
 5. A busca e a página de Produções passam a incluir o novo item automaticamente.
 
-`js/production-showcase.js` usa o mesmo catálogo para as apresentações da Home e de Produções. A Home usa capa, título e direção sobre a imagem, categoria/ano, sinopse, CTA e logos. A página interna preserva sua apresentação anterior. `js/detail.js` atende as páginas individuais.
+`js/production-showcase.js` usa o mesmo catálogo para as apresentações da Home e de Produções. A Home usa capa, título e direção sobre a imagem, categoria/ano, sinopse, CTA e logos. O catálogo usa o mesmo bloco visual da Home. `js/detail.js` atende todas as páginas individuais com imagem à esquerda, apresentação à direita e quatro seções de ficha técnica. `js/production-ui.js` compartilha os links das plataformas entre os dois layouts.
 
 A busca aceita trechos de títulos, ignora maiúsculas e acentos e considera títulos oficiais e eventuais títulos ingleses cadastrados. É local, sem serviços externos. Resultados usam `textContent`, evitando interpretar consultas como HTML.
 
@@ -74,3 +74,18 @@ Imagens fornecidas e utilizadas, sem edição: `assets/images/mellisboa.jpg`, `a
 - Abertura principal: ativação de som e pulo. Alternativa: abertura e pulo via `?intro=teste`. Motor da intro principal comparado com a versão anterior e preservado.
 - Quatro testes de conteúdo aprovados, sintaxe de todos os scripts válida e `git diff --check` sem problemas.
 - Testes feitos no navegador local Chromium; validar Safari/iPhone real, Chrome mobile, rotação, teclado virtual na busca, áudio e tela cheia dos players manualmente. O formulário mantém o comportamento anterior de abrir o aplicativo de e-mail.
+
+
+## Imagens e ficha técnica
+
+- `images.poster`: cartaz oficial disponível; use `null` quando não houver. A página interna usa a thumbnail como alternativa, preservando sua proporção.
+- `images.thumbnail`: capa para o player e alternativa na página interna.
+- `images.banner`: campo reservado para banner horizontal; atualmente não é renderizado.
+- `cover` e `trailerImage` permanecem por compatibilidade; prefira `images` em novas integrações.
+- Campos opcionais confirmados: `localTitle`, `origin`, `duration`, `rating`. Os textos traduzíveis devem ter equivalentes em `en`. Valores ausentes não aparecem.
+- `credits` recebe pares de label/valor, com equivalentes em `en.credits`. Direção vem de `director`; gênero fica na identificação básica.
+- `notes` e `en.notes` preservam informações confirmadas de exibição, festivais e prêmios.
+- Plataformas são declaradas em `streamingPlatforms`. Se não houver logo oficial local, use `logo: null`: o nome será um link compacto acessível. Globoplay aguarda esse asset.
+- Os dados editoriais são conteúdo confiável do repositório; não inserir HTML de usuários nesses campos.
+
+Novas rotas: `/producoes/a-historia-de-um-sonho.html` e `/producoes/milton-bituca-nascimento.html`, ambas com suporte a `?lang=en`.

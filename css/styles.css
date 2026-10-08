@@ -123,3 +123,5 @@ body.menu-open,body.intro-open{overflow:hidden}
 
 @media(max-width:760px){.production-detail__hero{grid-template-columns:minmax(0,1fr)}.production-detail__text{min-width:0}}
 @media(max-width:480px){.production-detail__text h1{font-size:clamp(38px,10.5vw,50px);overflow-wrap:anywhere}}
+
+.site-footer{background:#000}

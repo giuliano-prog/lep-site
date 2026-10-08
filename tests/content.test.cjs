@@ -53,10 +53,14 @@ test('catalogue entries have complete translated content, valid assets and detai
     assert.ok(['www.youtube.com', 'vimeo.com'].includes(new URL(item.trailer).hostname));
     for (const [platform, url] of item.streaming) {
       assert.equal(new URL(url).protocol, 'https:');
-      assert.ok(fs.existsSync(path.join(root, platforms[platform].logo)), platform);
+      assert.ok(platforms[platform].name, platform);
+      if (platforms[platform].logo) assert.ok(fs.existsSync(path.join(root, platforms[platform].logo)), platform);
     }
   }
   assert.deepEqual(Array.from(items.filter(p => p.featured), p => p.slug), ['a-conspiracao-condor', 'ronaldinho-gaucho', 'abre-a-coxia']);
+  for (const item of items) {
+    for (const asset of Object.values(item.images).filter(Boolean)) assert.ok(fs.existsSync(path.join(root, asset)), asset);
+  }
 });
 
 test('every page loads shared navigation dependencies and local references exist', () => {

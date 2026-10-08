@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const sound = intro.querySelector('.intro-sound');
   const syncSound = () => {
     sound.setAttribute('aria-pressed', String(!video.muted));
-    sound.textContent = video.muted ? 'Ativar som' : 'Desativar som';
+    sound.textContent = video.muted ? LEP.t('intro.soundOn') : LEP.t('intro.soundOff');
   };
   // The audio track itself is attenuated, including on iOS where volume is device-controlled.
   sound.addEventListener('click', () => {

@@ -14,9 +14,9 @@
   function comparisonTools() {
     const panel = document.createElement('nav');
     panel.className = 'intro-preview-tools';
-    panel.setAttribute('aria-label', 'Comparar aberturas localmente');
-    panel.innerHTML = '<span>Teste local</span>';
-    for (const [value, label] of [['atual', 'Atual'], ['teste', 'Nova']]) {
+    panel.setAttribute('aria-label', LEP.t('intro.compare'));
+    panel.innerHTML = `<span>${LEP.t('intro.local')}</span>`;
+    for (const [value, label] of [['atual', LEP.t('intro.current')], ['teste', LEP.t('intro.new')]]) {
       const link = document.createElement('a');
       const url = new URL(location.href);
       url.searchParams.set('intro', value);
@@ -26,11 +26,11 @@
       panel.append(link);
     }
     const replay = document.createElement('button');
-    replay.textContent = 'Repetir';
+    replay.textContent = LEP.t('intro.replay');
     replay.addEventListener('click', () => location.reload());
     const close = document.createElement('button');
     close.textContent = '×';
-    close.setAttribute('aria-label', 'Fechar controles de teste');
+    close.setAttribute('aria-label', LEP.t('intro.close'));
     close.addEventListener('click', () => panel.remove());
     panel.append(replay, close);
     document.body.append(panel);
@@ -45,12 +45,12 @@
 
       const dialog = document.createElement('dialog');
       dialog.className = 'intro-test';
-      dialog.setAttribute('aria-label', 'Abertura alternativa da LEP Filmes');
+      dialog.setAttribute('aria-label', LEP.t('intro.alternative'));
       dialog.innerHTML = `<div class="intro-test__stage">
         <span class="intro-test__line intro-test__line--first" aria-hidden="true"></span>
         <div class="intro-test__reveal"><span class="intro-test__mark"><img src="assets/brand/20250715_LEP_Filmes_White.png" alt="LEP Filmes" decoding="async"></span></div>
         <span class="intro-test__line intro-test__line--last" aria-hidden="true"></span>
-      </div><button class="intro-test__skip" autofocus>Pular abertura ↗</button>`;
+      </div><button class="intro-test__skip" autofocus>${LEP.t('intro.skip')} ↗</button>`;
       document.body.append(dialog);
       document.body.classList.add('intro-test-open');
       let finished = false;
